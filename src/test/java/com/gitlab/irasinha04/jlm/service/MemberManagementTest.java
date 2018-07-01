@@ -1,6 +1,7 @@
 package com.gitlab.irasinha04.jlm.service;
 
 import com.gitlab.irasinha04.jlm.Member;
+import com.gitlab.irasinha04.jlm.util.TestUtil;
 
 public class MemberManagementTest {
 	
@@ -8,18 +9,14 @@ public class MemberManagementTest {
 	private static final String EMAIL = "irasinha.04@gmail.com";
 	private static final String NAME = "Ira";
 
-	public static void test(String actual, String expected, String variable) {
-	    System.out.println(variable + " Test " + (actual.equals(expected)? "Passed" : "Failed"));
-	}
-	
 	public static void main(String[] args) {
 		MemberManagementService test = new MemberManagementService();
 		
 		int id = test.create(NAME, EMAIL, PHONE_NUM);
 		Member m = test.read(id);
 
-		test(NAME, m.getName(), "Name");
-		test(EMAIL, m.getEmail(), "Email");
-		test(PHONE_NUM, m.getPhoneNo(), "Phone No.");
+		TestUtil.test(NAME, m.getName(), "Name");
+		TestUtil.test(EMAIL, m.getEmail(), "Email");
+		TestUtil.test(PHONE_NUM, m.getPhoneNo(), "Phone No.");
 	}
 }
