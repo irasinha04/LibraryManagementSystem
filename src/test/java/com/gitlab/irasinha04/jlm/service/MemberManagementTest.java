@@ -10,22 +10,12 @@ public class MemberManagementTest {
 		int id = test.createMember("Ira", "irasinha.04@gmail.com", "9560084813");
 		Member m = test.readMember(id);
 		
-		if((m.getName()).equals("Ira"))
-			System.out.println("Name test passed");
-		else
-			System.out.println("Name test failed");
+		System.out.println("Name test " + (m.getName().equals("Ira") ? "Passed" : "Failed"));
 		
-		if((m.getEmail()).equals("irasinha.04@gmail.com"))
-			System.out.println("E-Mail test passed");
-		else
-			System.out.println("E-Mail test failed");
+		System.out.println("Email test " + (m.getEmail().equals("irasinha.04@gmail.com") ? "Passed" : "Failed"));
 		
-		if((m.getPhoneNo()).equals("9560084813"))
-			System.out.println("Phone test passed");
-		else
-			System.out.println("Phone test failed");
+		System.out.println("Phone no. test " + (m.getPhoneNo().equals("9560084813") ? "Passed" : "Failed"));
 		
-
 //		System.out.println("Member created");
 //		System.out.println("Details of member :");
 //		System.out.println(m);
