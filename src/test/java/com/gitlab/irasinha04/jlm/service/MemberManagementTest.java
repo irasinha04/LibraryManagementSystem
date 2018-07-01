@@ -15,8 +15,8 @@ public class MemberManagementTest {
 	public static void main(String[] args) {
 		MemberManagementService test = new MemberManagementService();
 		
-		int id = test.createMember(NAME, EMAIL, PHONE_NUM);
-		Member m = test.readMember(id);
+		int id = test.create(NAME, EMAIL, PHONE_NUM);
+		Member m = test.read(id);
 
 		test(NAME, m.getName(), "Name");
 		test(EMAIL, m.getEmail(), "Email");

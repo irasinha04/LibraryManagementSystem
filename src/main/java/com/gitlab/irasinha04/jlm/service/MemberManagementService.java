@@ -11,7 +11,7 @@ public class MemberManagementService {
 	
 	private Map<Integer, Member> memberMap = new HashMap<>();
 	
-	public int createMember(String name, String email, String phoneNo) {
+	public int create(String name, String email, String phoneNo) {
 		
 		int memberId = Double.valueOf(Math.random() * 10000).intValue();
 
@@ -27,26 +27,26 @@ public class MemberManagementService {
 	}
 	
 
-	public Member readMember(int id) {
+	public Member read(int id) {
 		return memberMap.get(id);
 	}
 	
-	public void updateMemberName(int id, String newName) {
+	public void updateName(int id, String newName) {
 		Member m = memberMap.get(id);
 		m.setName(newName);
 	}
 	
-	public void updateMemberEmail(int id, String newEmail) {
+	public void updateEmail(int id, String newEmail) {
 		Member m = memberMap.get(id);
 		m.setEmail(newEmail);
 	}
 
-	public void updateMemberPhoneNo(int id, String newPhoneNo) {
+	public void updatePhoneNo(int id, String newPhoneNo) {
 		Member m = memberMap.get(id);
 		m.setPhoneNo(newPhoneNo);
 	}
 	
-	public void deleteMember(int id) {
+	public void delete(int id) {
 		memberMap.remove(id);
 	}
 }
