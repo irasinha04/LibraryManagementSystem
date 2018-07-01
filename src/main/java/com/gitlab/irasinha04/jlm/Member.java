@@ -1,33 +1,33 @@
 package com.gitlab.irasinha04.jlm;
 
 public class Member {
-	private int ID;
-	private String Name;
-	private String JoinDate;
+	private int id;
+	private String name;
+	private String joinDate;
 
 //Getters and Setters
 	public int getID() {
-		return ID;
+		return id;
 	}
 
 	public void setID(int id) {
-		ID = id;
+		this.id = id;
 	}
 
 	public String getJoinDate() {
-		return JoinDate;
+		return joinDate;
 	}
 
 	public void setJoinDate(String joinDate) {
-		JoinDate = joinDate;
+		this.joinDate = joinDate;
 	}
 
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 }

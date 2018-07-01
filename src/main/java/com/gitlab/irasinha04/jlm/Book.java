@@ -1,53 +1,51 @@
 package com.gitlab.irasinha04.jlm;
 
 public class Book {
-	private int ID;
-	private String Title;
-	private String Author;
-	private String Genre;
-	private int Rating;
+	private int id;
+	private String title;
+	private String author;
+	private String genre;
+	private int rating;
 
 // Getters and Setters
 	public void setID(int id) {
-		ID = id;
+		this.id = id;
 	}
 	
 	public void setTitle(String title) {
-		Title = title;
+		this.title = title;
 	}
 	
 	public void setAuthor(String author) {
-		Author = author;
+		this.author = author;
 	}
 	
 	public void setGenre(String genre) {
-		Genre = genre;
+		this.genre = genre;
 	}
 	
 	public void setRating(int rating) {
-		Rating = rating;
+		this.rating = rating;
 	}
 
 	public int getID() {
-		return ID;
+		return id;
 	}
 
 	public String getTitle() {
-		return Title;
+		return title;
 	}
 
 	public String getAuthor() {
-		return Author;
+		return author;
 	}
 
 	public String getGenre() {
-		return Genre;
+		return genre;
 	}
 
 	public int getRating() {
-		return Rating;
+		return rating;
 	}
-	
-	
 }
 
