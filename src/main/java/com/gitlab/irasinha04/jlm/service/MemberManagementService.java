@@ -8,7 +8,6 @@ import com.gitlab.irasinha04.jlm.Member;
 
 public class MemberManagementService {
 	
-	
 	private Map<Integer, Member> memberMap = new HashMap<>();
 	
 	public int create(String name, String email, String phoneNo) {
