@@ -15,8 +15,8 @@ public class MemberManagementTest {
 		int id = test.create(NAME, EMAIL, PHONE_NUM);
 		Member m = test.read(id);
 
-		TestUtil.test(NAME, m.getName(), "Name");
-		TestUtil.test(EMAIL, m.getEmail(), "Email");
-		TestUtil.test(PHONE_NUM, m.getPhoneNo(), "Phone No.");
+		TestUtil.bmsTest(NAME, m.getName(), "Name");
+		TestUtil.bmsTest(EMAIL, m.getEmail(), "Email");
+		TestUtil.bmsTest(PHONE_NUM, m.getPhoneNo(), "Phone No.");
 	}
 }
