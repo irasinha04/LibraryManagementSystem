@@ -9,6 +9,7 @@ public class MenuUtil {
 		System.out.println("#                        #");
 		System.out.println("# 1. Book Management     #");
 		System.out.println("# 2. Member Managenent   #");
+		System.out.println("# 3. Exit                #");
 		System.out.println("#                        #");
 		System.out.println("##########################");
 

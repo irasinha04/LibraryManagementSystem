@@ -9,14 +9,16 @@ import com.gitlab.irasinha04.jlm.service.BookManagementService;
 public class BookServiceUtil {
 
 	public void BookService(int option) {
-		int c = 0;
-		while (c == 0) {
+
+		BookManagementService bms = new BookManagementService();
+		BookMenuUtil bmu = new BookMenuUtil();
+
+		boolean isActive = true;
+		while (isActive) {
+			System.out.println("***Option selected = * " + option + " *");
 			switch (option) {
 
 			case 1: {
-				c++;
-				BookManagementService bms = new BookManagementService();
-
 				Scanner scanner = new Scanner(System.in);
 				System.out.println("Enter title : ");
 				String title = scanner.nextLine();
@@ -33,16 +35,12 @@ public class BookServiceUtil {
 
 				int id = bms.create(title, genre, author, rating);
 				System.out.println("New book record created successfully ! Book ID : " + id);
+
 				System.out.println();
-				LibraryManagementSystem lmsMenu = new LibraryManagementSystem();
-				lmsMenu.displayMenu();
 				break;
 			}
 
 			case 2: {
-				c++;
-				BookManagementService bms = new BookManagementService();
-
 				Scanner scanner = new Scanner(System.in);
 				System.out.println("Enter Book ID : ");
 				int id = scanner.nextInt();
@@ -53,36 +51,27 @@ public class BookServiceUtil {
 				System.out.println("Author : " + book.getAuthor());
 				System.out.println("Genre : " + book.getGenre());
 				System.out.println("Rating : " + book.getRating());
+
 				System.out.println();
-				LibraryManagementSystem lmsMenu = new LibraryManagementSystem();
-				lmsMenu.displayMenu();
 				break;
 			}
 
 			case 3: {
-				c++;
-				BookManagementService bms = new BookManagementService();
-
 				Scanner scanner = new Scanner(System.in);
 				System.out.println("Enter Book ID : ");
 				int id = scanner.nextInt();
 				scanner.nextLine();
-
 				Book book = bms.readDetails(id);
 				System.out.println("The book's title is " + book.getTitle());
 				System.out.println("Enter new book title : ");
 				String newTitle = scanner.nextLine();
 				bms.updateTitle(id, newTitle);
+
 				System.out.println();
-				LibraryManagementSystem lmsMenu = new LibraryManagementSystem();
-				lmsMenu.displayMenu();
 				break;
 			}
 
 			case 4: {
-				c++;
-				BookManagementService bms = new BookManagementService();
-
 				Scanner scanner = new Scanner(System.in);
 				System.out.println("Enter Book ID : ");
 				int id = scanner.nextInt();
@@ -94,16 +83,12 @@ public class BookServiceUtil {
 				String newAuthor = scanner.nextLine();
 
 				bms.updateAuthor(id, newAuthor);
+
 				System.out.println();
-				LibraryManagementSystem lmsMenu = new LibraryManagementSystem();
-				lmsMenu.displayMenu();
 				break;
 			}
 
 			case 5: {
-				c++;
-				BookManagementService bms = new BookManagementService();
-
 				Scanner scanner = new Scanner(System.in);
 				System.out.println("Enter Book ID : ");
 				int id = scanner.nextInt();
@@ -115,16 +100,12 @@ public class BookServiceUtil {
 				String newGenre = scanner.nextLine();
 
 				bms.updateGenre(id, newGenre);
+
 				System.out.println();
-				LibraryManagementSystem lmsMenu = new LibraryManagementSystem();
-				lmsMenu.displayMenu();
 				break;
 			}
 
 			case 6: {
-				c++;
-				BookManagementService bms = new BookManagementService();
-
 				Scanner scanner = new Scanner(System.in);
 				System.out.println("Enter Book ID : ");
 				int id = scanner.nextInt();
@@ -137,16 +118,12 @@ public class BookServiceUtil {
 				scanner.nextLine();
 
 				bms.updateRating(id, newRating);
+
 				System.out.println();
-				LibraryManagementSystem lmsMenu = new LibraryManagementSystem();
-				lmsMenu.displayMenu();
 				break;
 			}
 
 			case 7: {
-				c++;
-				BookManagementService bms = new BookManagementService();
-
 				Scanner scanner = new Scanner(System.in);
 				System.out.println("Enter Book ID : ");
 				int id = scanner.nextInt();
@@ -165,9 +142,13 @@ public class BookServiceUtil {
 				if (decision == 1) {
 					bms.delete(id);
 				}
+
 				System.out.println();
-				LibraryManagementSystem lmsMenu = new LibraryManagementSystem();
-				lmsMenu.displayMenu();
+				break;
+			}
+
+			case 8: {
+				isActive = false;
 				break;
 			}
 
@@ -175,6 +156,7 @@ public class BookServiceUtil {
 				System.out.println("Oops! You entered the wrong choice. Try again");
 			}
 			}
+			option = bmu.BookMenu();
 		}
 	}
 }

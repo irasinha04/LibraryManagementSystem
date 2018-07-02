@@ -13,6 +13,7 @@ public class BookMenuUtil {
 		System.out.println("# 5. Update book genre   #");
 		System.out.println("# 6. Update book rating  #");
 		System.out.println("# 7. Delete book         #");
+		System.out.println("# 8. Main Menu           #");
 		System.out.println("##########################");
 
 		Scanner scanner = new Scanner(System.in);

@@ -13,6 +13,7 @@ public class MemberMenuUtil {
 		System.out.println("# 4. Update member email #");
 		System.out.println("# 5. Update member phone #");
 		System.out.println("# 6. Delete member       #");
+		System.out.println("# 7. Main Menu           #");
 		System.out.println("##########################");
 
 		Scanner scanner = new Scanner(System.in);

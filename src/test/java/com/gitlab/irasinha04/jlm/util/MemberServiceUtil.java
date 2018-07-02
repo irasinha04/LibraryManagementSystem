@@ -10,14 +10,13 @@ import com.gitlab.irasinha04.jlm.service.MemberManagementService;
 public class MemberServiceUtil {
 
 	public void MemberService(int option) {
-		int c = 0;
-		while (c == 0) {
+		MemberManagementService mms = new MemberManagementService();
+		MemberMenuUtil mmu = new MemberMenuUtil();
+		boolean isActive = true;
+		while (isActive) {
 			switch (option) {
 
 			case 1: {
-				c++;
-				MemberManagementService mms = new MemberManagementService();
-
 				Scanner scanner = new Scanner(System.in);
 				System.out.println("Enter name : ");
 				String name = scanner.nextLine();
@@ -31,15 +30,10 @@ public class MemberServiceUtil {
 				int id = mms.create(name, emailId, phoneNum);
 				System.out.println("New member created successfully ! Member ID : " + id);
 				System.out.println();
-				LibraryManagementSystem lmsMenu = new LibraryManagementSystem();
-				lmsMenu.displayMenu();
 				break;
 			}
 
 			case 2: {
-				c++;
-				MemberManagementService mms = new MemberManagementService();
-
 				Scanner scanner = new Scanner(System.in);
 				System.out.println("Enter Member ID : ");
 				int id = scanner.nextInt();
@@ -52,15 +46,10 @@ public class MemberServiceUtil {
 				System.out.println("Phone number : " + member.getPhoneNo());
 				System.out.println("Date of Joining : " + member.getJoinDate());
 				System.out.println();
-				LibraryManagementSystem lmsMenu = new LibraryManagementSystem();
-				lmsMenu.displayMenu();
 				break;
 			}
 
 			case 3: {
-				c++;
-				MemberManagementService mms = new MemberManagementService();
-
 				Scanner scanner = new Scanner(System.in);
 				System.out.println("Enter Member ID : ");
 				int id = scanner.nextInt();
@@ -72,15 +61,10 @@ public class MemberServiceUtil {
 				String newName = scanner.nextLine();
 				mms.updateName(id, newName);
 				System.out.println();
-				LibraryManagementSystem lmsMenu = new LibraryManagementSystem();
-				lmsMenu.displayMenu();
 				break;
 
 			}
 			case 4: {
-				c++;
-				MemberManagementService mms = new MemberManagementService();
-
 				Scanner scanner = new Scanner(System.in);
 				System.out.println("Enter Member ID : ");
 				int id = scanner.nextInt();
@@ -92,14 +76,9 @@ public class MemberServiceUtil {
 				String newEmail = scanner.nextLine();
 				mms.updateEmail(id, newEmail);
 				System.out.println();
-				LibraryManagementSystem lmsMenu = new LibraryManagementSystem();
-				lmsMenu.displayMenu();
 				break;
 			}
 			case 5: {
-				c++;
-				MemberManagementService mms = new MemberManagementService();
-
 				Scanner scanner = new Scanner(System.in);
 				System.out.println("Enter Member ID : ");
 				int id = scanner.nextInt();
@@ -112,14 +91,9 @@ public class MemberServiceUtil {
 
 				mms.updatePhoneNo(id, newPhoneNo);
 				System.out.println();
-				LibraryManagementSystem lmsMenu = new LibraryManagementSystem();
-				lmsMenu.displayMenu();
 				break;
 			}
 			case 6: {
-				c++;
-				MemberManagementService mms = new MemberManagementService();
-
 				Scanner scanner = new Scanner(System.in);
 				System.out.println("Enter Member ID : ");
 				int id = scanner.nextInt();
@@ -132,22 +106,25 @@ public class MemberServiceUtil {
 				System.out.println("Phone number : " + member.getPhoneNo());
 				System.out.println("Date of Joining : " + member.getJoinDate());
 
-				System.out.println("Are you sure you wamt to delete book  (yes = 1, no = 0 : ");
+				System.out.println("Are you sure you wamt to delete member  (yes = 1, no = 0 : ");
 				int decision = scanner.nextInt();
 				scanner.nextLine();
 				if (decision == 1) {
 					mms.delete(id);
 				}
-				System.out.println();
-				LibraryManagementSystem lmsMenu = new LibraryManagementSystem();
-				lmsMenu.displayMenu();
+				System.out.println();				
 				break;
 			}
 
+			case 7: {
+				isActive = false;
+				break;
+			}
 			default: {
 				System.out.println("Oops! You entered the wrong choice. Try again");
 			}
 			}
+			option = mmu.MemberMenu();
 		}
 	}
 }

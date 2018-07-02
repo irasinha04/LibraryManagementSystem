@@ -11,24 +11,29 @@ import com.gitlab.irasinha04.jlm.util.MenuUtil;
 public class LibraryManagementSystem {
 
 	public void displayMenu() {
-		int c = 0;
-		while (c == 0) {
+	 boolean isActive = true;
+		while (isActive) {
 			int option = MenuUtil.Menu();
 
 			switch (option) {
 			case 1: {
-				c++;
 				int screen1option = BookMenuUtil.BookMenu();
 				BookServiceUtil bsu = new BookServiceUtil();
+				System.out.println("Option selected = * " + screen1option + " *");
 				bsu.BookService(screen1option);
 				break;
 			}
 
 			case 2: {
-				c++;
 				int screen2option = MemberMenuUtil.MemberMenu();
 				MemberServiceUtil msu = new MemberServiceUtil();
+				System.out.println("Option selected = * " + screen2option + " *");
 				msu.MemberService(screen2option);
+				break;
+			}
+			
+			case 3: {
+				isActive = false;
 				break;
 			}
 
