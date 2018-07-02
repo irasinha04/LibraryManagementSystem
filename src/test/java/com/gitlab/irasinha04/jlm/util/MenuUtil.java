@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class MenuUtil {
 
-	public static int Menu() {
+	public static int menu() {
 		System.out.println("########## MENU ##########");
 		System.out.println("#                        #");
 		System.out.println("# 1. Book Management     #");

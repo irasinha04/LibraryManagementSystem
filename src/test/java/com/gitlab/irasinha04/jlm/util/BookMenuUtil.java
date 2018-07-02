@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class BookMenuUtil {
 
-	public static int BookMenu() {
+	public static int bookMenu() {
 		System.out.println("######## Book MENU #######");
 		System.out.println("# 1. Create book         #");
 		System.out.println("# 2. Read book details   #");

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class MemberMenuUtil {
 
-	public static int MemberMenu() {
+	public static int memberMenu() {
 
 		System.out.println("####### Member MENU ######");
 		System.out.println("# 1. Create member       #");

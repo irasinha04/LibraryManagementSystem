@@ -11,7 +11,7 @@ public class MemberServiceUtil {
 
 	MemberManagementService mms = new MemberManagementService();
 	
-	public void MemberService(int option) {
+	public void memberService(int option) {
 
 		boolean isActive = true;
 		while (isActive) {
@@ -126,7 +126,7 @@ public class MemberServiceUtil {
 			}
 			}
 			if(option != 7) {
-				option = MemberMenuUtil.MemberMenu();
+				option = MemberMenuUtil.memberMenu();
 			}
 		}
 	}

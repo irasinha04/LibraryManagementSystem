@@ -16,20 +16,18 @@ public class LibraryManagementSystem {
 		boolean isActive = true;
 		
 		while (isActive) {
-			int option = MenuUtil.Menu();
+			int option = MenuUtil.menu();
 
 			switch (option) {
 			case 1: {
-				int screen1option = BookMenuUtil.BookMenu();
-				System.out.println("Option selected = * " + screen1option + " *");
-				bsu.BookService(screen1option);
+				int screen1option = BookMenuUtil.bookMenu();
+				bsu.bookService(screen1option);
 				break;
 			}
 
 			case 2: {
-				int screen2option = MemberMenuUtil.MemberMenu();
-				System.out.println("Option selected = * " + screen2option + " *");
-				msu.MemberService(screen2option);
+				int screen2option = MemberMenuUtil.memberMenu();
+				msu.memberService(screen2option);
 				break;
 			}
 			

@@ -10,11 +10,10 @@ public class BookServiceUtil {
 
 	BookManagementService bms = new BookManagementService();
 	
-	public void BookService(int option) {
+	public void bookService(int option) {
 
 		boolean isActive = true;
 		while (isActive) {
-			System.out.println("***Option selected = * " + option + " *");
 			switch (option) {
 
 			case 1: {
@@ -156,7 +155,7 @@ public class BookServiceUtil {
 			}
 			}
 			if(option != 8) {
-				option = BookMenuUtil.BookMenu();
+				option = BookMenuUtil.bookMenu();
 			}
 		}
 	}
