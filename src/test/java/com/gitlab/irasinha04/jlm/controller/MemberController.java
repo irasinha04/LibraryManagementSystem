@@ -1,17 +1,16 @@
-package com.gitlab.irasinha04.jlm.util;
+package com.gitlab.irasinha04.jlm.controller;
 
 import java.util.Scanner;
 
-import com.gitlab.irasinha04.jlm.Book;
-import com.gitlab.irasinha04.jlm.LibraryManagementSystem;
 import com.gitlab.irasinha04.jlm.Member;
 import com.gitlab.irasinha04.jlm.service.MemberManagementService;
+import com.gitlab.irasinha04.jlm.util.MenuUtil;
 
-public class MemberServiceUtil {
+public class MemberController {
 
 	MemberManagementService mms = new MemberManagementService();
 	
-	public void memberService(int option) {
+	public void performMemberOperation(int option) {
 
 		boolean isActive = true;
 		while (isActive) {
@@ -126,7 +125,7 @@ public class MemberServiceUtil {
 			}
 			}
 			if(option != 7) {
-				option = MemberMenuUtil.memberMenu();
+				option = MenuUtil.displayMemberMenu();
 			}
 		}
 	}

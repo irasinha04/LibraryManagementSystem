@@ -1,16 +1,16 @@
-package com.gitlab.irasinha04.jlm.util;
+package com.gitlab.irasinha04.jlm.controller;
 
 import java.util.Scanner;
 
 import com.gitlab.irasinha04.jlm.Book;
-import com.gitlab.irasinha04.jlm.LibraryManagementSystem;
 import com.gitlab.irasinha04.jlm.service.BookManagementService;
+import com.gitlab.irasinha04.jlm.util.MenuUtil;
 
-public class BookServiceUtil {
+public class BookController {
 
 	BookManagementService bms = new BookManagementService();
 	
-	public void bookService(int option) {
+	public void performBookOperation(int option) {
 
 		boolean isActive = true;
 		while (isActive) {
@@ -155,7 +155,7 @@ public class BookServiceUtil {
 			}
 			}
 			if(option != 8) {
-				option = BookMenuUtil.bookMenu();
+				option = MenuUtil.displayBookMenu();
 			}
 		}
 	}

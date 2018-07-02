@@ -1,36 +1,32 @@
 package com.gitlab.irasinha04.jlm;
 
-import java.util.Scanner;
-
-import com.gitlab.irasinha04.jlm.util.BookMenuUtil;
-import com.gitlab.irasinha04.jlm.util.BookServiceUtil;
-import com.gitlab.irasinha04.jlm.util.MemberMenuUtil;
-import com.gitlab.irasinha04.jlm.util.MemberServiceUtil;
+import com.gitlab.irasinha04.jlm.controller.BookController;
+import com.gitlab.irasinha04.jlm.controller.MemberController;
 import com.gitlab.irasinha04.jlm.util.MenuUtil;
 
 public class LibraryManagementSystem {
 
-	public void displayMenu() {
-		BookServiceUtil bsu = new BookServiceUtil();
-		MemberServiceUtil msu = new MemberServiceUtil();
+	public static void main(String[] args) {
+		BookController bookController = new BookController();
+		MemberController memberController = new MemberController();
 		boolean isActive = true;
-		
+
 		while (isActive) {
-			int option = MenuUtil.menu();
+			int option = MenuUtil.displayMainMenu();
 
 			switch (option) {
 			case 1: {
-				int screen1option = BookMenuUtil.bookMenu();
-				bsu.bookService(screen1option);
+				int screen1option = MenuUtil.displayBookMenu();
+				bookController.performBookOperation(screen1option);
 				break;
 			}
 
 			case 2: {
-				int screen2option = MemberMenuUtil.memberMenu();
-				msu.memberService(screen2option);
+				int screen2option = MenuUtil.displayMemberMenu();
+				memberController.performMemberOperation(screen2option);
 				break;
 			}
-			
+
 			case 3: {
 				isActive = false;
 				break;
@@ -41,10 +37,5 @@ public class LibraryManagementSystem {
 			}
 			}
 		}
-	}
-
-	public static void main(String[] args) {
-		LibraryManagementSystem lmsMenu = new LibraryManagementSystem();
-		lmsMenu.displayMenu();
 	}
 }
