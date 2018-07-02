@@ -9,9 +9,10 @@ import com.gitlab.irasinha04.jlm.service.MemberManagementService;
 
 public class MemberServiceUtil {
 
+	MemberManagementService mms = new MemberManagementService();
+	
 	public void MemberService(int option) {
-		MemberManagementService mms = new MemberManagementService();
-		MemberMenuUtil mmu = new MemberMenuUtil();
+
 		boolean isActive = true;
 		while (isActive) {
 			switch (option) {
@@ -124,7 +125,9 @@ public class MemberServiceUtil {
 				System.out.println("Oops! You entered the wrong choice. Try again");
 			}
 			}
-			option = mmu.MemberMenu();
+			if(option != 7) {
+				option = MemberMenuUtil.MemberMenu();
+			}
 		}
 	}
 }

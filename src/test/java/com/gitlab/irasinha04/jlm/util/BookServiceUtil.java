@@ -8,10 +8,9 @@ import com.gitlab.irasinha04.jlm.service.BookManagementService;
 
 public class BookServiceUtil {
 
+	BookManagementService bms = new BookManagementService();
+	
 	public void BookService(int option) {
-
-		BookManagementService bms = new BookManagementService();
-		BookMenuUtil bmu = new BookMenuUtil();
 
 		boolean isActive = true;
 		while (isActive) {
@@ -156,7 +155,9 @@ public class BookServiceUtil {
 				System.out.println("Oops! You entered the wrong choice. Try again");
 			}
 			}
-			option = bmu.BookMenu();
+			if(option != 8) {
+				option = BookMenuUtil.BookMenu();
+			}
 		}
 	}
 }
