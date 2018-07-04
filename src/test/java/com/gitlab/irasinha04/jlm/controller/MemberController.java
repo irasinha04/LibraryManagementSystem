@@ -9,7 +9,7 @@ import com.gitlab.irasinha04.jlm.util.MenuUtil;
 
 public class MemberController {
 
-	MemberManagementService mms = new MemberManagementService();
+	MemberManagementService mms = MemberManagementService.getInstance();
 	
 	public void performMemberOperation(int option) {
 
@@ -46,6 +46,8 @@ public class MemberController {
 				System.out.println("Email Id : " + member.getEmail());
 				System.out.println("Phone number : " + member.getPhoneNo());
 				System.out.println("Date of Joining : " + member.getJoinDate());
+				System.out.println("No. of books issued : " + member.getNumOfBooksIssued());
+				System.out.println("Fine pending : INR " + member.getFine());
 				System.out.println();
 				break;
 			}
@@ -106,7 +108,6 @@ public class MemberController {
 				System.out.println("Email Id : " + member.getEmail());
 				System.out.println("Phone number : " + member.getPhoneNo());
 				System.out.println("Date of Joining : " + member.getJoinDate());
-
 				System.out.println("Are you sure you wamt to delete member  (yes = 1, no = 0 : ");
 				int decision = scanner.nextInt();
 				scanner.nextLine();

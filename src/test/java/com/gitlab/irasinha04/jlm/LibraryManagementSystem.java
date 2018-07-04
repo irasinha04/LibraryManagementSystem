@@ -3,6 +3,7 @@ package com.gitlab.irasinha04.jlm;
 import java.io.IOException;
 
 import com.gitlab.irasinha04.jlm.controller.BookController;
+import com.gitlab.irasinha04.jlm.controller.IssueController;
 import com.gitlab.irasinha04.jlm.controller.MemberController;
 import com.gitlab.irasinha04.jlm.util.MenuUtil;
 
@@ -15,6 +16,7 @@ public class LibraryManagementSystem {
 	public static void main(String[] args) throws IOException {
 		BookController bookController = new BookController();
 		MemberController memberController = new MemberController();
+		IssueController issueController = new IssueController();
 		boolean isActive = true;
 
 		System.out.println("*WELCOME TO LIBRARY MANAGEMENT SYSTEM*");
@@ -40,6 +42,12 @@ public class LibraryManagementSystem {
 			}
 
 			case 3: {
+				int screen3option = MenuUtil.displayIssueMenu();
+				issueController.performIssueOperation(screen3option);
+				break;
+			}
+			
+			case 4: {
 				isActive = false;
 				System.out.println("Saving your records...");
 				bookController.saveBookRecords(BOOK_FILE_PATH);

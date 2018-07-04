@@ -9,7 +9,7 @@ import com.gitlab.irasinha04.jlm.util.MenuUtil;
 
 public class BookController {
 
-	BookManagementService bms = new BookManagementService();
+	BookManagementService bms = BookManagementService.getInstance();
 	
 	public void performBookOperation(int option) {
 
@@ -50,7 +50,12 @@ public class BookController {
 				System.out.println("Genre : " + book.getGenre());
 				System.out.println("Author : " + book.getAuthor());
 				System.out.println("Rating : " + book.getRating());
-
+				if(book.getIsIssued()) {
+					System.out.println("The book is currently not available !");
+				} else {
+					System.out.println("The book is available");
+				}
+ 					
 				System.out.println();
 				break;
 			}

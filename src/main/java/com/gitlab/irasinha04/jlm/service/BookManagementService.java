@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Set;
 
 import com.gitlab.irasinha04.jlm.Book;
+import com.gitlab.irasinha04.jlm.enums.Genre;
 //import com.gitlab.irasinha04.jlm.controller.BufferedWriter;
 //import com.gitlab.irasinha04.jlm.controller.FileWriter;
 
@@ -19,13 +20,22 @@ public class BookManagementService {
 
 	private Map<Integer, Book> bookMap = new HashMap<>();
 
+	private BookManagementService() {
+	}
+
+	private static final BookManagementService bms = new BookManagementService();
+
+	public static BookManagementService getInstance() {
+		return bms;
+	}
+
 	public int create(String title, String genre, String author, int rating) {
 		int bookId = Double.valueOf(Math.random() * 10000).intValue();
 
 		Book book = new Book();
 		book.setID(bookId);
 		book.setTitle(title);
-		book.setGenre(genre);
+		book.setGenre(Genre.valueOf(genre.toUpperCase()));
 		book.setAuthor(author);
 		book.setRating(rating);
 		bookMap.put(bookId, book);
@@ -44,7 +54,7 @@ public class BookManagementService {
 
 	public void updateGenre(int id, String newGenre) {
 		Book book = bookMap.get(id);
-		book.setGenre(newGenre);
+		book.setGenre(Genre.valueOf(newGenre.toUpperCase()));
 	}
 
 	public void updateAuthor(int id, String newAuthor) {
@@ -71,10 +81,10 @@ public class BookManagementService {
 			Book book = bookMap.get(key);
 
 			String text = book.getID() + "|" + book.getTitle() + "|" + book.getGenre() + "|" + book.getAuthor() + "|"
-					+ book.getRating();
-			pw.write(text);
+					+ book.getRating() + "|" + book.getIsIssued();
+			pw.println(text);
 		}
-		
+
 		pw.close();
 	}
 
@@ -89,9 +99,10 @@ public class BookManagementService {
 			String[] arr = text.split("\\|");
 			book.setID(Integer.valueOf(arr[0]));
 			book.setTitle(arr[1]);
-			book.setGenre(arr[2]);
+			book.setGenre(Genre.valueOf(arr[2].toUpperCase()));
 			book.setAuthor(arr[3]);
 			book.setRating(Integer.valueOf(arr[4]));
+			book.setIsIssued(arr[5].equals("true"));
 
 			bookMap.put(book.getID(), book);
 		}
