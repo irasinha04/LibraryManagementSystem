@@ -11,14 +11,14 @@ public class BookManagementTest {
 	private static final int RATING = 5;
 	
 	public static void main(String[] args) {
-		BookManagementService test = new BookManagementService();
+		BookManagementService bms = new BookManagementService();
 		
-		int id = test.create(TITLE,GENRE,AUTHOR,RATING);
-		Book book = test.readDetails(id);
+		int id = bms.create(TITLE,GENRE,AUTHOR,RATING);
+		Book book = bms.readDetails(id);
 
-		TestUtil.test(TITLE, book.getTitle(), "Title");
-		TestUtil.test(GENRE, book.getGenre(), "Genre");
-		TestUtil.test(AUTHOR, book.getAuthor(), "Author");
-		TestUtil.test(RATING, book.getRating(),"Rating");
+		TestUtil.bmsTest(TITLE, book.getTitle(), "Title");
+		TestUtil.bmsTest(GENRE, book.getGenre(), "Genre");
+		TestUtil.bmsTest(AUTHOR, book.getAuthor(), "Author");
+		TestUtil.bmsTest(RATING, book.getRating(),"Rating");
 	}
 }

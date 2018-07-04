@@ -1,13 +1,20 @@
 package com.gitlab.irasinha04.jlm.service;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.gitlab.irasinha04.jlm.Book;
 import com.gitlab.irasinha04.jlm.Member;
 
 public class MemberManagementService {
-	
 	
 	private Map<Integer, Member> memberMap = new HashMap<>();
 	
@@ -48,5 +55,45 @@ public class MemberManagementService {
 	
 	public void delete(int id) {
 		memberMap.remove(id);
+	}
+
+	public void saveMember(String filePath) throws IOException {
+		// Write to file
+				File file = new File(filePath);
+				PrintWriter pw = new PrintWriter(new FileOutputStream(file), true);
+
+				for (Integer key : memberMap.keySet()) {
+
+					Member member = memberMap.get(key);
+
+					String text = member.getId() + "|" + member.getName() + "|" 
+					+ member.getEmail() + "|" + member.getPhoneNo() + "|" 
+					+ member.getJoinDate();
+					pw.write(text);
+				}
+				
+				pw.close();
+	}
+
+	public void retrieveMember(String filePath) throws IOException {
+		// Read from file
+				File file = new File(filePath);
+				FileReader fr = new FileReader(file);
+				BufferedReader br = new BufferedReader(fr);
+				String text;
+				while ((text = br.readLine()) != null) {
+					Member member = new Member();
+					String[] arr = text.split("\\|");
+					member.setId(Integer.valueOf(arr[0]));
+					member.setName(arr[1]);
+					member.setEmail(arr[2]);
+					member.setPhoneNo(arr[3]);
+					member.setJoinDate(arr[4]);
+
+					memberMap.put(member.getId(), member);
+				}
+				br.close();
+				fr.close();
+		
 	}
 }
