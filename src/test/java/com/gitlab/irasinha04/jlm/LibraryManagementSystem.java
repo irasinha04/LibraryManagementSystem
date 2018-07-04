@@ -9,8 +9,8 @@ import com.gitlab.irasinha04.jlm.util.MenuUtil;
 public class LibraryManagementSystem {
 
 	// Create file path
-	private static final String BOOK_FILE_PATH = "C:\\Users\\IRA\\Desktop\\LibraryBooks.txt";
-	private static final String MEMBER_FILE_PATH = "C:\\Users\\IRA\\Desktop\\LibraryMembers.txt";
+	private static final String BOOK_FILE_PATH = "/home/abhijitsinha/Documents/ira/LMS/LibraryBooks.txt";
+	private static final String MEMBER_FILE_PATH = "/home/abhijitsinha/Documents/ira/LMS/LibraryMembers.txt";
 	
 	public static void main(String[] args) throws IOException {
 		BookController bookController = new BookController();

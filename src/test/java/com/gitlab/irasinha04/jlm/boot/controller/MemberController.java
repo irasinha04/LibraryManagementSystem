@@ -1,5 +1,6 @@
 package com.gitlab.irasinha04.jlm.boot.controller;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import com.gitlab.irasinha04.jlm.service.MemberManagementService;
 
 @RestController
 @RequestMapping("/member")
+@CrossOrigin(origins = "http://localhost:3000")
 public class MemberController {
 
 	private final MemberManagementService mms = new MemberManagementService();
@@ -39,5 +41,10 @@ public class MemberController {
 	@RequestMapping(value = "/update/id/{id}/phone", method = RequestMethod.POST)
 	public void updatePhoneNo(@PathVariable(value = "id") Integer id, @RequestBody(required = true) String phoneNo) {
 		mms.updatePhoneNo(id, phoneNo);
+	}
+	
+	@RequestMapping(value = "/delete/id/{id}", method = RequestMethod.DELETE)
+	public void delete(@PathVariable(value = "id") Integer id) {
+		mms.delete(id);
 	}
 }

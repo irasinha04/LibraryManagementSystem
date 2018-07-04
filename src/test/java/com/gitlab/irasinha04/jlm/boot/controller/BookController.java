@@ -1,5 +1,6 @@
 package com.gitlab.irasinha04.jlm.boot.controller;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import com.gitlab.irasinha04.jlm.service.BookManagementService;
 
 @RestController
 @RequestMapping("/book")
+@CrossOrigin(origins = "http://localhost:3000")
 public class BookController {
 
 	private final BookManagementService bms = new BookManagementService();
@@ -44,6 +46,11 @@ public class BookController {
 	@RequestMapping(value = "/update/id/{id}/rating", method = RequestMethod.POST)
 	public void updateRating(@PathVariable(value = "id") Integer id, @RequestBody(required = true) String rating) {
 		bms.updateRating(id, Integer.valueOf(rating));
+	}
+	
+	@RequestMapping(value = "/delete/id/{id}", method = RequestMethod.DELETE)
+	public void delete(@PathVariable(value = "id") Integer id) {
+		bms.delete(id);
 	}
 
 }
