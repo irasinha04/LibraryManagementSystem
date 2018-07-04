@@ -1,5 +1,6 @@
 package com.gitlab.irasinha04.jlm.controller;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import com.gitlab.irasinha04.jlm.Member;
@@ -128,5 +129,15 @@ public class MemberController {
 				option = MenuUtil.displayMemberMenu();
 			}
 		}
+	}
+
+	public void retrieveMemberRecords(String filePath) throws IOException {
+		mms.retrieveMember(filePath);
+		
+	}
+
+	public void saveMemberRecords(String filePath) throws IOException {
+		// TODO Auto-generated method stub
+		mms.saveMember(filePath);
 	}
 }
