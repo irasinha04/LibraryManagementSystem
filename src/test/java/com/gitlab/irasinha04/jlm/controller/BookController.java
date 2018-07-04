@@ -1,5 +1,6 @@
 package com.gitlab.irasinha04.jlm.controller;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import com.gitlab.irasinha04.jlm.Book;
@@ -46,8 +47,8 @@ public class BookController {
 				Book book = bms.readDetails(id);
 				System.out.println("The book's details are as follows: ");
 				System.out.println("Title : " + book.getTitle());
-				System.out.println("Author : " + book.getAuthor());
 				System.out.println("Genre : " + book.getGenre());
+				System.out.println("Author : " + book.getAuthor());
 				System.out.println("Rating : " + book.getRating());
 
 				System.out.println();
@@ -158,5 +159,14 @@ public class BookController {
 				option = MenuUtil.displayBookMenu();
 			}
 		}
+	}
+
+	public void retrieveBookRecords(String filePath) throws IOException {
+		bms.retrieveBook(filePath);
+	}
+
+	public void saveBookRecords(String filePath) throws IOException {
+		bms.saveBook(filePath);
+		
 	}
 }
