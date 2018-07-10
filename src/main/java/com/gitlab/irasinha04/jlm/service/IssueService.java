@@ -4,45 +4,40 @@ import java.util.Scanner;
 
 import com.gitlab.irasinha04.jlm.Book;
 import com.gitlab.irasinha04.jlm.Member;
+import com.gitlab.irasinha04.jlm.controller.BookController;
+import com.gitlab.irasinha04.jlm.controller.IssueController;
+import com.gitlab.irasinha04.jlm.controller.MemberController;
+import com.gitlab.irasinha04.jlm.exception.IssueException;
 
 public class IssueService {
 	MemberManagementService mms = MemberManagementService.getInstance();
 	BookManagementService bms = BookManagementService.getInstance();
+	MemberController memCont = new MemberController();
+	BookController bookCont = new BookController();
 
-	public void issueBook(int bookId, int memberId) {
+	public void issueBook(int bookId, int memberId) throws IssueException {
 
 		Member m = mms.read(memberId);
 		Book b = bms.readDetails(bookId);
-		
+
 		if (m.getIsBlacklisted()) {
-			System.out.println("YOU ARE BLACKLSTED!!!");
-			return;
+			throw new IssueException("YOU ARE BLACKLISTED !!");
 		}
 		if (m.getNumOfBooksIssued() >= 5) {
-			System.out.println("DONT ISSUE MORE BOOKS!!");
-			return;
+			throw new IssueException("BOOK LIMIT EXCEEDED !!");
 		}
 		if (m.getFine() > 0) {
-			System.out.println("PAAAAAAAAAYYYYYYYYYY!!!!");
-			return;
+			throw new IssueException("PAY FINE BEFORE ISSUING !!");
 		}
 		if (b.getIsIssued()) {
-			System.out.println("BOOK UNAVIALABLE!!");
-			return;
+			throw new IssueException("BOOK ALREADY ISSUED !!");
 		}
 		if (!b.getGenre().isIssueable()) {
-			System.out.println("DON'T RUN AWAY WITH THIS BOOK!!");
-			return;
+			throw new IssueException("BOOK BELONGS TO SPECIAL CATEGORY !!");
 		}
 
 		m.setNumOfBooksIssued(m.getNumOfBooksIssued() + 1);
 		b.setIsIssued(true);
-
-		System.out.println("Book issued successfully !");
-		System.out.println("Book ID: " + b.getID());
-		System.out.println("Book Name: " + b.getTitle());
-		System.out.println("Member ID: " + m.getId());
-		System.out.println("Member Name: " + m.getName());
 	}
 
 	public void returnBook(int bookId, int memberId) {
@@ -53,6 +48,7 @@ public class IssueService {
 		double fine = m.getFine() + calculateFine(m, b);
 		m.setFine(fine);
 		b.setIsIssued(false);
+
 	}
 
 	private double calculateFine(Member m, Book b) {

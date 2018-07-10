@@ -78,7 +78,9 @@ public class Member {
 	
 	@Override
 	public String toString() {
-		return String.format("id: %d, name: %s, email: %s, phone: %s, join date: %s", id, name, email, phoneNo, joinDate);
+		return String.format("Id: %d, Name: %s, Email: %s, Phone: %s, "
+				+ "Join date: %s, No. of books issued: %d, Fine: %ld",
+				id, name, email, phoneNo, joinDate, numOfBooks, fine);
 	}
 	
 }

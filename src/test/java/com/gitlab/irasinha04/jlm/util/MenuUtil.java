@@ -1,9 +1,16 @@
 package com.gitlab.irasinha04.jlm.util;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class MenuUtil {
 
+	public static void displayWelcome() {
+		System.out.println("*WELCOME TO LIBRARY MANAGEMENT SYSTEM*");
+		System.out.println("Retrieving your records..");
+		System.out.println("Records retrieved successfully!");
+	}
+	
 	public static int displayMainMenu() {
 		System.out.println("########## MENU ##########");
 		System.out.println("#                        #");
@@ -67,6 +74,15 @@ public class MenuUtil {
 		int option = scanner.nextInt();
 		scanner.nextLine();
 		return option;
+	}
+	
+	public static void displayWrongChoiceSelected() {
+		System.out.println("Oops! You entered the wrong choice. Try again");
+	}
+	
+	public static void displayExit() {
+		System.out.println("Saving your records...");
+		System.out.println("Your records are saved successfully. Thank you!");
 	}
 	
 }

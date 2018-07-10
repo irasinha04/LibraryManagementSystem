@@ -10,7 +10,7 @@ import com.gitlab.irasinha04.jlm.util.MenuUtil;
 public class MemberController {
 
 	MemberManagementService mms = MemberManagementService.getInstance();
-	
+
 	public void performMemberOperation(int option) {
 
 		boolean isActive = true;
@@ -114,7 +114,7 @@ public class MemberController {
 				if (decision == 1) {
 					mms.delete(id);
 				}
-				System.out.println();				
+				System.out.println();
 				break;
 			}
 
@@ -126,7 +126,7 @@ public class MemberController {
 				System.out.println("Oops! You entered the wrong choice. Try again");
 			}
 			}
-			if(option != 7) {
+			if (option != 7) {
 				option = MenuUtil.displayMemberMenu();
 			}
 		}
@@ -134,11 +134,22 @@ public class MemberController {
 
 	public void retrieveMemberRecords(String filePath) throws IOException {
 		mms.retrieveMember(filePath);
-		
+
 	}
 
 	public void saveMemberRecords(String filePath) throws IOException {
-		// TODO Auto-generated method stub
 		mms.saveMember(filePath);
+	}
+
+	public void displayIsBlackListed() {
+		System.out.println("YOU ARE BLACKLSTED!!!");
+	}
+
+	public void displayNumOfBooksExceedsLimit() {
+		System.out.println("DONT ISSUE MORE BOOKS!!");
+	}
+
+	public void displayPayFine() {
+		System.out.println("PAAAAAAAAAYYYYYYYYYY!!!!");
 	}
 }
