@@ -10,7 +10,7 @@ public class MemberManagementTest {
 	private static final String NAME = "Ira";
 
 	public static void main(String[] args) {
-		MemberManagementService test = new MemberManagementService();
+		MemberManagementService test = MemberManagementService.getInstance();
 		
 		int id = test.create(NAME, EMAIL, PHONE_NUM);
 		Member m = test.read(id);

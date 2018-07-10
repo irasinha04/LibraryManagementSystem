@@ -6,6 +6,9 @@ public class Member {
 	private String email;
 	private String phoneNo;
 	private String joinDate;
+	private boolean isBlackList;
+	private int numOfBooks;
+	private double fine;
 
 //Getters and Setters
 	public int getId() {
@@ -49,8 +52,35 @@ public class Member {
 		this.name = name;
 	}
 	
+	public boolean getIsBlacklisted() {
+		return isBlackList;
+	}
+	
+	public void setIsBlacklisted(boolean isBlackList) {
+		this.isBlackList = isBlackList;
+	}
+	
+	public int getNumOfBooksIssued() {
+		return numOfBooks;
+	}
+	
+	public void setNumOfBooksIssued(int numOfBooks) {
+		this.numOfBooks = numOfBooks;
+	}
+	
+	public double getFine() {
+		return fine;
+	}
+	
+	public void setFine(double fine) {
+		this.fine = fine;
+	}
+	
 	@Override
 	public String toString() {
-		return String.format("id: %d, name: %s, email: %s, phone: %s, join date: %s", id, name, email, phoneNo, joinDate);
+		return String.format("Id: %d, Name: %s, Email: %s, Phone: %s, "
+				+ "Join date: %s, No. of books issued: %d, Fine: %ld",
+				id, name, email, phoneNo, joinDate, numOfBooks, fine);
 	}
+	
 }
