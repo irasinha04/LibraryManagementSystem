@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Set;
 
 import com.gitlab.irasinha04.jlm.Book;
+import com.gitlab.irasinha04.jlm.LibraryManagementSystem;
 import com.gitlab.irasinha04.jlm.enums.Genre;
 //import com.gitlab.irasinha04.jlm.controller.BufferedWriter;
 //import com.gitlab.irasinha04.jlm.controller.FileWriter;
@@ -19,7 +20,8 @@ import com.gitlab.irasinha04.jlm.enums.Genre;
 public class BookManagementService {
 
 	private Map<Integer, Book> bookMap = new HashMap<>();
-
+	LibraryManagementSystem lms = new LibraryManagementSystem();
+	
 	private BookManagementService() {
 	}
 
@@ -108,5 +110,28 @@ public class BookManagementService {
 		}
 		br.close();
 		fr.close();
+	}
+	
+	public Map<Integer,Book> returnAllBookInfo() throws IOException {
+		// Read from file
+		File file = new File(lms.getBookFilePath());
+		FileReader fr = new FileReader(file);
+		BufferedReader br = new BufferedReader(fr);
+		String text;
+		while ((text = br.readLine()) != null) {
+			Book book = new Book();
+			String[] arr = text.split("\\|");
+			book.setID(Integer.valueOf(arr[0]));
+			book.setTitle(arr[1]);
+			book.setGenre(Genre.valueOf(arr[2].toUpperCase()));
+			book.setAuthor(arr[3]);
+			book.setRating(Integer.valueOf(arr[4]));
+			book.setIsIssued(arr[5].equals("true"));
+
+			bookMap.put(book.getID(), book);
+		}
+		br.close();
+		fr.close();
+		return bookMap;
 	}
 }

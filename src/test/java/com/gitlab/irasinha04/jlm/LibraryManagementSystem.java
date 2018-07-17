@@ -5,6 +5,7 @@ import java.io.IOException;
 import com.gitlab.irasinha04.jlm.controller.BookController;
 import com.gitlab.irasinha04.jlm.controller.IssueController;
 import com.gitlab.irasinha04.jlm.controller.MemberController;
+import com.gitlab.irasinha04.jlm.controller.HelpDeskController;
 import com.gitlab.irasinha04.jlm.exception.IssueException;
 import com.gitlab.irasinha04.jlm.util.MenuUtil;
 
@@ -14,15 +15,25 @@ public class LibraryManagementSystem {
 	private static final String BOOK_FILE_PATH = "C:\\Users\\IRA\\Desktop\\LibraryBooks.txt";
 	private static final String MEMBER_FILE_PATH = "C:\\Users\\IRA\\Desktop\\LibraryMembers.txt";
 	
+	public String getBookFilePath() {
+		return BOOK_FILE_PATH;
+	}
+	
+	public String getMemberFilePath() {
+		return MEMBER_FILE_PATH;
+	}
+	
 	public static void main(String[] args) throws IOException, IssueException {
 		BookController bookController = new BookController();
 		MemberController memberController = new MemberController();
 		IssueController issueController = new IssueController();
+		HelpDeskController helpdeskController = new HelpDeskController();
+		LibraryManagementSystem lms = new LibraryManagementSystem();
 		
 		boolean isActive = true;
 
-		bookController.retrieveBookRecords(BOOK_FILE_PATH);
-		memberController.retrieveMemberRecords(MEMBER_FILE_PATH);
+		bookController.retrieveBookRecords(lms.getBookFilePath());
+		memberController.retrieveMemberRecords(lms.getMemberFilePath());
 
 		MenuUtil.displayWelcome();
 		
@@ -49,10 +60,16 @@ public class LibraryManagementSystem {
 			}
 			
 			case 4: {
+				int screen4option = MenuUtil.displayHelpDeskMenu();
+				helpdeskController.performHelpDeskOperation(screen4option);
+				break;
+			}
+			
+			case 5: {
 				isActive = false;
 
-				bookController.saveBookRecords(BOOK_FILE_PATH);
-				memberController.saveMemberRecords(MEMBER_FILE_PATH);
+				bookController.saveBookRecords(lms.getBookFilePath());
+				memberController.saveMemberRecords(lms.getMemberFilePath());
 				
 				MenuUtil.displayExit();
 							

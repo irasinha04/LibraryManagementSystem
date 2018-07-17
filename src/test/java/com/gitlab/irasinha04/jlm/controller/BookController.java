@@ -175,11 +175,11 @@ public class BookController {
 
 	}
 
-	public void displayBookUnavailable() {
-		System.out.println("BOOK UNAVIALABLE!!");
-	}
-
-	public void displayBookIsSpecialCategory() {
-		System.out.println("DON'T RUN AWAY WITH THIS BOOK!!");		
-	}
+//	public void displayBookUnavailable() {
+//		System.out.println("BOOK UNAVIALABLE!!");
+//	}
+//
+//	public void displayBookIsSpecialCategory() {
+//		System.out.println("DON'T RUN AWAY WITH THIS BOOK!!");		
+//	}
 }

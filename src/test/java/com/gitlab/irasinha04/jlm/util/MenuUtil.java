@@ -17,7 +17,8 @@ public class MenuUtil {
 		System.out.println("# 1. Book Management     #");
 		System.out.println("# 2. Member Managenent   #");
 		System.out.println("# 3. Issue/Return        #");
-		System.out.println("# 4. Exit                #");
+		System.out.println("# 4. Help Desk           #");
+		System.out.println("# 5. Exit                #");
 		System.out.println("#                        #");
 		System.out.println("##########################");
 
@@ -69,6 +70,20 @@ public class MenuUtil {
 		System.out.println("# 2. Return book           #");
 		System.out.println("# 3. Main MENU             #");
 		System.out.println("############################");
+		
+		Scanner scanner = new Scanner(System.in);
+		int option = scanner.nextInt();
+		scanner.nextLine();
+		return option;
+	}
+	
+	public static int displayHelpDeskMenu() {
+		System.out.println("######### Help Desk MENU ###########");
+		System.out.println("# 1. View available books          #");
+		System.out.println("# 2. View all books                #");
+		System.out.println("# 3. View all members              #");
+		System.out.println("# 4. Main MENU                     #");
+		System.out.println("####################################");
 		
 		Scanner scanner = new Scanner(System.in);
 		int option = scanner.nextInt();
