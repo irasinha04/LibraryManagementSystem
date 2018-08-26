@@ -10,10 +10,10 @@ import com.gitlab.irasinha04.jlm.exception.IssueException;
 import com.gitlab.irasinha04.jlm.util.MenuUtil;
 
 public class LibraryManagementSystem {
-
+	
 	// Create file path
-	private static final String BOOK_FILE_PATH = "C:\\Users\\IRA\\Desktop\\LibraryBooks.txt";
-	private static final String MEMBER_FILE_PATH = "C:\\Users\\IRA\\Desktop\\LibraryMembers.txt";
+	private static final String BOOK_FILE_PATH = "C:\\Users\\IRA\\Desktop\\ProgramDatabaseFiles\\LibraryBooks.txt";
+	private static final String MEMBER_FILE_PATH = "C:\\Users\\IRA\\Desktop\\ProgramDatabaseFiles\\LibraryMembers.txt";
 	
 	public String getBookFilePath() {
 		return BOOK_FILE_PATH;

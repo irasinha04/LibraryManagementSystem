@@ -143,16 +143,4 @@ public class MemberController {
 	public void saveMemberRecords(String filePath) throws IOException {
 		mms.saveMember(filePath);
 	}
-
-//	public void displayIsBlackListed() {
-//		System.out.println("YOU ARE BLACKLSTED!!!");
-//	}
-//
-//	public void displayNumOfBooksExceedsLimit() {
-//		System.out.println("DONT ISSUE MORE BOOKS!!");
-//	}
-//
-//	public void displayPayFine() {
-//		System.out.println("PAAAAAAAAAYYYYYYYYYY!!!!");
-//	}
 }

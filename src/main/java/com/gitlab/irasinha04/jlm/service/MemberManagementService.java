@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -117,28 +118,7 @@ public class MemberManagementService {
 				fr.close();
 	}
 	
-	public Map<Integer, Member> returnAllMemberInfo() throws IOException {
-		File file = new File(lms.getMemberFilePath());
-		FileReader fr = new FileReader(file);
-		BufferedReader br = new BufferedReader(fr);
-		String text;
-		while ((text = br.readLine()) != null) {
-			Member member = new Member();
-			String[] arr = text.split("\\|");
-			member.setId(Integer.valueOf(arr[0]));
-			member.setName(arr[1]);
-			member.setDOB(arr[2]);
-			member.setEmail(arr[3]);
-			member.setPhoneNo(arr[4]);
-			member.setJoinDate(arr[5]);
-			member.setIsBlacklisted(arr[6].equals("true"));
-			member.setFine(Double.valueOf(arr[7]));
-			member.setNumOfBooksIssued(Integer.valueOf(arr[8]));
-
-			memberMap.put(member.getId(), member);
-		}
-		br.close();
-		fr.close();
-		return memberMap;
+	public Collection<Member> returnAllMemberInfo() throws IOException {
+		return memberMap.values();
 	}
 }
