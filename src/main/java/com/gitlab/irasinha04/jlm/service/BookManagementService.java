@@ -7,11 +7,15 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import com.gitlab.irasinha04.jlm.Book;
+import com.gitlab.irasinha04.jlm.LibraryManagementSystem;
 import com.gitlab.irasinha04.jlm.enums.Genre;
 //import com.gitlab.irasinha04.jlm.controller.BufferedWriter;
 //import com.gitlab.irasinha04.jlm.controller.FileWriter;
@@ -19,7 +23,8 @@ import com.gitlab.irasinha04.jlm.enums.Genre;
 public class BookManagementService {
 
 	private Map<Integer, Book> bookMap = new HashMap<>();
-
+//	LibraryManagementSystem lms = new LibraryManagementSystem();
+	
 	private BookManagementService() {
 	}
 
@@ -109,4 +114,19 @@ public class BookManagementService {
 		br.close();
 		fr.close();
 	}
+	
+	public Collection<Book> returnAllBookInfo() throws IOException {
+		return bookMap.values();
+	}
+	public Collection<Book> returnAllAvailableBookInfo() throws IOException {
+		List<Book> books = new ArrayList<>();
+		for (Book book:bookMap.values()){
+			if (book.getIsIssued()) {
+				continue;
+			} 
+			books.add(book);
+		}
+		return books;
+	}
+	
 }

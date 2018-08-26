@@ -9,6 +9,7 @@ public class Member {
 	private boolean isBlackList;
 	private int numOfBooks;
 	private double fine;
+	private String DOB;
 
 //Getters and Setters
 	public int getId() {
@@ -76,11 +77,18 @@ public class Member {
 		this.fine = fine;
 	}
 	
+	public String getDOB() {
+		return DOB;
+	}
+
+	public void setDOB(String DOB) {
+		this.DOB = DOB;
+	}
+	
 	@Override
 	public String toString() {
 		return String.format("Id: %d, Name: %s, Email: %s, Phone: %s, "
 				+ "Join date: %s, No. of books issued: %d, Fine: %ld",
 				id, name, email, phoneNo, joinDate, numOfBooks, fine);
-	}
-	
+	}	
 }

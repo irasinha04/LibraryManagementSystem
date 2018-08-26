@@ -21,6 +21,9 @@ public class MemberController {
 				Scanner scanner = new Scanner(System.in);
 				System.out.println("Enter name : ");
 				String name = scanner.nextLine();
+				
+				System.out.println("Enter DOB in numbers only (ddmmyyyy) : ");
+				String DOB = scanner.nextLine();
 
 				System.out.println("Enter email id : ");
 				String emailId = scanner.nextLine();
@@ -28,7 +31,7 @@ public class MemberController {
 				System.out.println("Enter phone number : ");
 				String phoneNum = scanner.nextLine();
 
-				int id = mms.create(name, emailId, phoneNum);
+				int id = mms.create(name, DOB, emailId, phoneNum);
 				System.out.println("New member created successfully ! Member ID : " + id);
 				System.out.println();
 				break;
@@ -139,17 +142,5 @@ public class MemberController {
 
 	public void saveMemberRecords(String filePath) throws IOException {
 		mms.saveMember(filePath);
-	}
-
-	public void displayIsBlackListed() {
-		System.out.println("YOU ARE BLACKLSTED!!!");
-	}
-
-	public void displayNumOfBooksExceedsLimit() {
-		System.out.println("DONT ISSUE MORE BOOKS!!");
-	}
-
-	public void displayPayFine() {
-		System.out.println("PAAAAAAAAAYYYYYYYYYY!!!!");
 	}
 }

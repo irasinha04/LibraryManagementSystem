@@ -35,7 +35,7 @@ public class IssueController {
 					if(e.getMessage() == null) {
 						System.out.println(e.getClass().getName());
 					} else {
-					System.out.println(e.getMessage());
+						System.out.println(e.getMessage());
 					}
 				}
 				break;

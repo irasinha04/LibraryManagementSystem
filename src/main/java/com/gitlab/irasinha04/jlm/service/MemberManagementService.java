@@ -7,17 +7,19 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.gitlab.irasinha04.jlm.Book;
+import com.gitlab.irasinha04.jlm.LibraryManagementSystem;
 import com.gitlab.irasinha04.jlm.Member;
-
 
 public class MemberManagementService {
 	
 	private Map<Integer, Member> memberMap = new HashMap<>();
+	LibraryManagementSystem lms = new LibraryManagementSystem();
 	
 	private MemberManagementService() {
 	}
@@ -28,12 +30,13 @@ public class MemberManagementService {
 		return mms;
 	}
 	
-	public int create(String name, String email, String phoneNo) {
+	public int create(String name, String DOB, String email, String phoneNo) {
 		
 		int memberId = Double.valueOf(Math.random() * 10000).intValue();
 
 		Member member = new Member();
 		member.setName(name);
+		member.setDOB(DOB);
 		member.setEmail(email);
 		member.setPhoneNo(phoneNo);
 		member.setId(memberId);	
@@ -78,10 +81,11 @@ public class MemberManagementService {
 
 					Member member = memberMap.get(key);
 
-					String text = member.getId() + "|" + member.getName() + "|" 
-					+ member.getEmail() + "|" + member.getPhoneNo() + "|" 
-					+ member.getJoinDate() + "|" + member.getIsBlacklisted() + "|"+
-					member.getFine() + "|" + member.getNumOfBooksIssued();
+					String text = member.getId() + "|" + member.getName() + "|" +
+					member.getDOB() + "|" + member.getEmail() + "|" + 
+					member.getPhoneNo() + "|" + member.getJoinDate() + "|" + 
+					member.getIsBlacklisted() + "|"+ member.getFine() + "|" + 
+					member.getNumOfBooksIssued();
 					
 					pw.println(text);
 				}
@@ -100,16 +104,21 @@ public class MemberManagementService {
 					String[] arr = text.split("\\|");
 					member.setId(Integer.valueOf(arr[0]));
 					member.setName(arr[1]);
-					member.setEmail(arr[2]);
-					member.setPhoneNo(arr[3]);
-					member.setJoinDate(arr[4]);
-					member.setIsBlacklisted(arr[5].equals("true"));
-					member.setFine(Double.valueOf(arr[6]));
-					member.setNumOfBooksIssued(Integer.valueOf(arr[7]));
+					member.setDOB(arr[2]);
+					member.setEmail(arr[3]);
+					member.setPhoneNo(arr[4]);
+					member.setJoinDate(arr[5]);
+					member.setIsBlacklisted(arr[6].equals("true"));
+					member.setFine(Double.valueOf(arr[7]));
+					member.setNumOfBooksIssued(Integer.valueOf(arr[8]));
 
 					memberMap.put(member.getId(), member);
 				}
 				br.close();
 				fr.close();
+	}
+	
+	public Collection<Member> returnAllMemberInfo() throws IOException {
+		return memberMap.values();
 	}
 }
